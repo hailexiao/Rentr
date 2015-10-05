@@ -48,6 +48,7 @@ group :test do
   gem 'factory_girl'
   gem 'faker'
   gem 'shoulda-matchers'
+  gem 'codeclimate-test-reporter', require: false
 end
 
 gem 'devise'
