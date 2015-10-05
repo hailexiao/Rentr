@@ -1,5 +1,5 @@
 ![Build Status](https://codeship.com/projects/67e0fb40-4db4-0133-ff9e-524cf6105349/status?branch=master)
-![Code Climate](https://codeclimate.com/github/hailexiao/rentr.png)
+[![Code Climate](https://codeclimate.com/github/hailexiao/Rentr/badges/gpa.svg)](https://codeclimate.com/github/hailexiao/Rentr)
 ![Coverage Status](https://coveralls.io/repos/github/hailexiao/rentr/badge.png)
 
 == README
