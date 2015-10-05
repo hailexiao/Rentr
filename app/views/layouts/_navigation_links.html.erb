@@ -1,0 +1,29 @@
+<%# add navigation links to this file %>
+<ul class="right">
+  <%- if current_tenant || current_landlord -%>
+    <% if current_tenant %>
+      <li><%= link_to 'Profile', tenant_path(current_tenant) %></li>
+      <li><%= link_to 'Edit My Account', edit_tenant_registration_path %></li>
+      <li><%= link_to 'Sign Out', destroy_tenant_session_path, method: :delete %></li>
+    <% else %>
+      <li><%= link_to 'Profile', landlord_path(current_landlord) %></li>
+      <li><%= link_to 'Edit My Account', edit_landlord_registration_path %></li>
+      <li><%= link_to 'Sign Out', destroy_landlord_session_path, method: :delete %></li>
+    <% end %>
+  <%- else -%>
+    <li class="has-dropdown">
+      <a>Sign Up</a>
+        <ul class="dropdown">
+          <li><%= link_to 'as a Tenant', new_tenant_registration_path %></li>
+          <li><%= link_to 'as a Landlord', new_landlord_registration_path %></li>
+        </ul>
+    </li>
+    <li class="has-dropdown">
+      <a>Sign In</a>
+        <ul class="dropdown">
+          <li><%= link_to 'as a Tenant', new_tenant_session_path %></li>
+          <li><%= link_to 'as a Landlord', new_landlord_session_path %></li>
+        </ul>
+    </li>
+  <%- end -%>
+</ul>  
