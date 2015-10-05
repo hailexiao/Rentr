@@ -44,8 +44,13 @@ end
 
 group :test do
   gem 'coveralls', require: false
+  gem 'capybara'
+  gem 'factory_girl'
+  gem 'faker'
+  gem 'shoulda-matchers'
 end
 
 gem 'devise'
 gem 'foundation-rails'
 gem 'simple_form'
+gem 'font-awesome-sass'
