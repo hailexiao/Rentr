@@ -11,10 +11,34 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151006144838) do
+ActiveRecord::Schema.define(version: 20151006155345) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "bills", force: :cascade do |t|
+    t.integer  "month",          null: false
+    t.integer  "amount",         null: false
+    t.integer  "rental_unit_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  create_table "electric_utilities", force: :cascade do |t|
+    t.string   "name",       null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "electric_utilities", ["name"], name: "index_electric_utilities_on_name", unique: true, using: :btree
+
+  create_table "gas_utilities", force: :cascade do |t|
+    t.string   "name",       null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "gas_utilities", ["name"], name: "index_gas_utilities_on_name", unique: true, using: :btree
 
   create_table "landlords", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -33,6 +57,15 @@ ActiveRecord::Schema.define(version: 20151006144838) do
 
   add_index "landlords", ["email"], name: "index_landlords_on_email", unique: true, using: :btree
   add_index "landlords", ["reset_password_token"], name: "index_landlords_on_reset_password_token", unique: true, using: :btree
+
+  create_table "neighborhoods", force: :cascade do |t|
+    t.string   "name",       null: false
+    t.integer  "boundaries"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "neighborhoods", ["name"], name: "index_neighborhoods_on_name", unique: true, using: :btree
 
   create_table "rental_units", force: :cascade do |t|
     t.string   "address",             null: false
