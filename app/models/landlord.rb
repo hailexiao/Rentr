@@ -8,5 +8,5 @@ class Landlord < ActiveRecord::Base
 
   validates :email, presence: true
   validates :email, format: { with: /.+@.+\..+/i,
-                             message: "Please enter a valid email address."}
+                              message: "Please enter a valid email address."}
 end

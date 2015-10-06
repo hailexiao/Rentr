@@ -5,8 +5,8 @@ class CreateRentalUnits < ActiveRecord::Migration
       t.integer :number_of_bedrooms, null: false
       t.string :type_of_dwelling, null: false
       t.integer :monthly_rent, null: false
-      t.integer :tenant_id, null: false
-      t.integer :landlord_id, null: false
+      t.integer :tenant_id
+      t.integer :landlord_id
       t.integer :electric_utility_id, null: false
       t.integer :gas_utility_id, null: false
       t.integer :neighborhood_id, null: false
