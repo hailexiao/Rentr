@@ -1,0 +1,56 @@
+{
+  "RSpec": {
+    "coverage": {
+      "/Users/hailexiao/Launch-Academy/Rentr/app/models/landlord.rb": [
+        1,
+        null,
+        null,
+        1,
+        null,
+        null
+      ],
+      "/Users/hailexiao/Launch-Academy/Rentr/app/models/tenant.rb": [
+        1,
+        null,
+        null,
+        1,
+        null,
+        null
+      ],
+      "/Users/hailexiao/Launch-Academy/Rentr/app/helpers/application_helper.rb": [
+        1,
+        null
+      ],
+      "/Users/hailexiao/Launch-Academy/Rentr/app/helpers/welcome_helper.rb": [
+        1,
+        null
+      ],
+      "/Users/hailexiao/Launch-Academy/Rentr/app/models/rental_unit.rb": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        null,
+        null,
+        1,
+        null,
+        1,
+        1,
+        null,
+        null,
+        null,
+        1,
+        null,
+        1,
+        1,
+        null,
+        null,
+        null
+      ]
+    },
+    "timestamp": 1444145140
+  }
+}
