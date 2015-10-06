@@ -13,7 +13,6 @@ class RentalUnitsController < ApplicationController
 
   def create
     existing_unit = unique_address_checker(params[:rental_unit][:address])
-    binding.pry
     if existing_unit.nil?
       @rental_unit = RentalUnit.create(rental_unit_params)
     else
