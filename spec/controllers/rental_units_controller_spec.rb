@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe RentalUnitsController, type: :controller do
 
   before (:each) do
-    rental_unit = FactoryGirl.create(:rental_unit)
+    @rental_unit = FactoryGirl.create(:rental_unit)
   end
 
   describe "GET #index" do
@@ -15,7 +15,7 @@ RSpec.describe RentalUnitsController, type: :controller do
 
   describe "GET #show" do
     it "returns http success" do
-      get :show, id: rental_unit.id
+      get :show, id: @rental_unit.id
       expect(response).to have_http_status(:success)
     end
   end
@@ -29,7 +29,7 @@ RSpec.describe RentalUnitsController, type: :controller do
 
   describe "GET #destroy" do
     it "returns http success" do
-      get :destroy, id: rental_unit.id
+      get :destroy, id: @rental_unit.id
       expect(response).to have_http_status(:success)
     end
   end
