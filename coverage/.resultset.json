@@ -7,12 +7,24 @@
         null,
         1,
         null,
+        null,
+        1,
+        null,
+        1,
+        1,
+        null,
         null
       ],
       "/Users/hailexiao/Launch-Academy/Rentr/app/models/tenant.rb": [
         1,
         null,
         null,
+        1,
+        null,
+        null,
+        1,
+        null,
+        1,
         1,
         null,
         null
@@ -25,6 +37,43 @@
         1,
         null
       ],
+      "/Users/hailexiao/Launch-Academy/Rentr/app/controllers/welcome_controller.rb": [
+        1,
+        1,
+        null,
+        null
+      ],
+      "/Users/hailexiao/Launch-Academy/Rentr/app/controllers/application_controller.rb": [
+        1,
+        null,
+        null,
+        1,
+        null
+      ],
+      "/Users/hailexiao/Launch-Academy/Rentr/app/models/bill.rb": [
+        1,
+        1,
+        1,
+        null,
+        1,
+        1,
+        null
+      ],
+      "/Users/hailexiao/Launch-Academy/Rentr/app/models/electric_utility.rb": [
+        1,
+        1,
+        null
+      ],
+      "/Users/hailexiao/Launch-Academy/Rentr/app/models/gas_utility.rb": [
+        1,
+        1,
+        null
+      ],
+      "/Users/hailexiao/Launch-Academy/Rentr/app/models/neighborhood.rb": [
+        1,
+        1,
+        null
+      ],
       "/Users/hailexiao/Launch-Academy/Rentr/app/models/rental_unit.rb": [
         1,
         1,
@@ -33,7 +82,6 @@
         1,
         1,
         1,
-        null,
         null,
         1,
         null,
@@ -51,6 +99,6 @@
         null
       ]
     },
-    "timestamp": 1444145140
+    "timestamp": 1444148383
   }
 }
