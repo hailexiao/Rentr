@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151005171937) do
+ActiveRecord::Schema.define(version: 20151006144838) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,6 +33,22 @@ ActiveRecord::Schema.define(version: 20151005171937) do
 
   add_index "landlords", ["email"], name: "index_landlords_on_email", unique: true, using: :btree
   add_index "landlords", ["reset_password_token"], name: "index_landlords_on_reset_password_token", unique: true, using: :btree
+
+  create_table "rental_units", force: :cascade do |t|
+    t.string   "address",             null: false
+    t.integer  "number_of_bedrooms",  null: false
+    t.string   "type_of_dwelling",    null: false
+    t.integer  "monthly_rent",        null: false
+    t.integer  "tenant_id",           null: false
+    t.integer  "landlord_id",         null: false
+    t.integer  "electric_utility_id", null: false
+    t.integer  "gas_utility_id",      null: false
+    t.integer  "neighborhood_id",     null: false
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+  end
+
+  add_index "rental_units", ["address"], name: "index_rental_units_on_address", unique: true, using: :btree
 
   create_table "tenants", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
