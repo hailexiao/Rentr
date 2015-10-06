@@ -1,0 +1,7 @@
+<h2><%= @rental_unit.address %></h2>
+<%= @rental_unit.type_of_dwelling %><br>
+<%= "#{@rental_unit.number_of_bedrooms} bedrooms" %><br>
+<%= "Rent: $#{@rental_unit.monthly_rent} per month" %><br>
+<%= "Gas Company: #{@rental_unit.gas_utility.name}" %><br>
+<%= "Electric Company: #{@rental_unit.electric_utility.name}" %><br>
+<%= "Neighborhood: #{@rental_unit.neighborhood.name}" %><br>

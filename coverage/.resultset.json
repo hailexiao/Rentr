@@ -33,14 +33,33 @@
         1,
         null
       ],
+      "/Users/hailexiao/Launch-Academy/Rentr/app/helpers/rental_units_helper.rb": [
+        1,
+        null
+      ],
       "/Users/hailexiao/Launch-Academy/Rentr/app/helpers/welcome_helper.rb": [
         1,
         null
       ],
-      "/Users/hailexiao/Launch-Academy/Rentr/app/controllers/welcome_controller.rb": [
+      "/Users/hailexiao/Launch-Academy/Rentr/app/models/gas_utility.rb": [
         1,
         1,
         null,
+        1,
+        null
+      ],
+      "/Users/hailexiao/Launch-Academy/Rentr/app/models/electric_utility.rb": [
+        1,
+        1,
+        null,
+        1,
+        null
+      ],
+      "/Users/hailexiao/Launch-Academy/Rentr/app/models/neighborhood.rb": [
+        1,
+        1,
+        null,
+        1,
         null
       ],
       "/Users/hailexiao/Launch-Academy/Rentr/app/controllers/application_controller.rb": [
@@ -50,28 +69,70 @@
         1,
         null
       ],
-      "/Users/hailexiao/Launch-Academy/Rentr/app/models/bill.rb": [
+      "/Users/hailexiao/Launch-Academy/Rentr/app/controllers/welcome_controller.rb": [
         1,
+        1,
+        null,
+        null
+      ],
+      "/Users/hailexiao/Launch-Academy/Rentr/app/controllers/rental_units_controller.rb": [
+        1,
+        1,
+        0,
+        null,
+        null,
+        1,
+        2,
+        null,
+        null,
+        1,
+        3,
+        null,
+        null,
+        1,
+        3,
+        3,
+        3,
+        2,
+        null,
+        1,
+        1,
+        1,
+        null,
+        null,
+        2,
         1,
         1,
         null,
         1,
         1,
-        null
-      ],
-      "/Users/hailexiao/Launch-Academy/Rentr/app/models/electric_utility.rb": [
+        null,
+        null,
+        null,
         1,
+        0,
+        0,
+        0,
+        null,
+        null,
         1,
-        null
-      ],
-      "/Users/hailexiao/Launch-Academy/Rentr/app/models/gas_utility.rb": [
+        null,
         1,
+        null,
+        2,
+        null,
+        null,
+        null,
+        null,
         1,
-        null
-      ],
-      "/Users/hailexiao/Launch-Academy/Rentr/app/models/neighborhood.rb": [
+        3,
+        null,
+        3,
+        null,
+        null,
         1,
-        1,
+        null,
+        null,
         null
       ],
       "/Users/hailexiao/Launch-Academy/Rentr/app/models/rental_unit.rb": [
@@ -99,6 +160,6 @@
         null
       ]
     },
-    "timestamp": 1444148383
+    "timestamp": 1444172718
   }
 }

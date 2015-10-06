@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  get 'welcome/index'
 
   devise_for :landlords
   devise_for :tenants
@@ -11,6 +10,7 @@ Rails.application.routes.draw do
 
   resources :tenants, only: :show
   resources :landlords, only: :show
+  resources :rental_units
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

@@ -5,3 +5,21 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+neighborhoods =
+  Neighborhood.create([
+    { name: 'Chinatown' }, { name: 'Back Bay' }, { name: 'Financial District' },
+    { name: 'North End' }, { name: 'South End' }, { name: 'West End' },
+    { name: 'South Boston' }, { name: 'East Boston' }, { name: 'Charlestown' },
+    { name: 'Allston'}, { name: 'Brighton' }, { name: 'Fenway' },
+    { name: 'Jamaica Plain' }, { name: 'Roxbury' }, { name: 'Dorchester' },
+    { name: 'Cambridge' }, { name: 'Somerville' }
+    ])
+
+gas_utilities = GasUtility.create([
+  { name: 'National Grid' }, { name: 'Eversource' }
+  ])
+
+electric_utilities = ElectricUtility.create([
+  { name: 'National Grid' }, { name: 'Eversource' }
+  ])  

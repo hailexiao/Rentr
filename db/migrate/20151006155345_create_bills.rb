@@ -3,7 +3,7 @@ class CreateBills < ActiveRecord::Migration
     create_table :bills do |t|
       t.integer :month, null: false
       t.integer :amount, null: false
-      t.integer :rental_unit_id
+      t.belongs_to :rental_unit
 
       t.timestamps null: false
     end
