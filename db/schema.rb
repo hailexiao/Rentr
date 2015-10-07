@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151006155345) do
+ActiveRecord::Schema.define(version: 20151007203005) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -79,6 +79,8 @@ ActiveRecord::Schema.define(version: 20151006155345) do
     t.integer  "neighborhood_id",     null: false
     t.datetime "created_at",          null: false
     t.datetime "updated_at",          null: false
+    t.float    "latitude"
+    t.float    "longitude"
   end
 
   add_index "rental_units", ["address"], name: "index_rental_units_on_address", unique: true, using: :btree

@@ -6,6 +6,8 @@ class RentalUnit < ActiveRecord::Base
   belongs_to :neighborhood
   has_many :bills, dependent: :destroy
 
+  geocoded_by :address
+
   validates :address, presence: true
 
   validates :number_of_bedrooms, presence: true
@@ -18,5 +20,7 @@ class RentalUnit < ActiveRecord::Base
   validates :monthly_rent, presence: true
   validates :monthly_rent,
     numericality: { only_integer: true }
+
+  after_validation :geocode
 
 end
