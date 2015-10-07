@@ -5,3 +5,5 @@
 <%= "Gas Company: #{@rental_unit.gas_utility.name}" %><br>
 <%= "Electric Company: #{@rental_unit.electric_utility.name}" %><br>
 <%= "Neighborhood: #{@rental_unit.neighborhood.name}" %><br>
+
+<%= link_to "Back to list of rental units", rental_units_path, class:"button radius" %>

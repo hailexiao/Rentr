@@ -10,6 +10,12 @@
   color: white;
   padding: 0 15px; }
 
+#map {
+  margin: 50px auto;
+  height: 80%;
+  width: 80%;
+}
+
 // THESE ARE EXAMPLES YOU CAN MODIFY
 // create mixins using Foundation classes
 @mixin twelve-columns {

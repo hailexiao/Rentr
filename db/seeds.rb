@@ -15,7 +15,7 @@ Neighborhood.create(
   { name: 'Jamaica Plain' }, { name: 'Roxbury' }, { name: 'Dorchester' },
   { name: 'Cambridge' }, { name: 'Somerville' }
   ]
-  )
+                   )
 
 GasUtility.create([{ name: 'National Grid' }, { name: 'Eversource' }])
 
