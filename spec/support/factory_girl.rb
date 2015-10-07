@@ -26,7 +26,7 @@ FactoryGirl.define do
     address {
       "#{Faker::Address.street_address}, #{Faker::Address.city},
        #{Faker::Address.state_abbr}, #{Faker::Address.zip}"
-      }
+            }
     number_of_bedrooms Random.rand(1..7)
     type_of_dwelling "Triple Decker"
     monthly_rent Random.rand(1500..3500)
