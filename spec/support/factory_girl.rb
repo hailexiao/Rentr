@@ -21,4 +21,31 @@ FactoryGirl.define do
     password 'password'
     password_confirmation 'password'
   end
+
+  factory :rental_unit do
+    address {
+      "#{Faker::Address.street_address}, #{Faker::Address.city},
+       #{Faker::Address.state_abbr}, #{Faker::Address.zip}"
+            }
+    number_of_bedrooms Random.rand(1..7)
+    type_of_dwelling "Triple Decker"
+    monthly_rent Random.rand(1500..3500)
+    tenant
+    landlord
+    electric_utility
+    gas_utility
+    neighborhood
+  end
+
+  factory :electric_utility do
+    name { Faker::Company.name }
+  end
+
+  factory :gas_utility do
+    name { Faker::Company.name }
+  end
+
+  factory :neighborhood do
+    name { Faker::Address.city }
+  end
 end
