@@ -11,9 +11,10 @@
   padding: 0 15px; }
 
 #map {
-  margin: 50px auto;
-  height: 80%;
-  width: 80%;
+  margin: auto;
+  margin-bottom: 50px;
+  height: 600px;
+  width: 1024px;
 }
 
 // THESE ARE EXAMPLES YOU CAN MODIFY
@@ -47,6 +48,7 @@
 main {
   @include twelve-columns;
   background-color: #eee;
+  padding-top: 25px;
   }
 section {
   @extend .row;

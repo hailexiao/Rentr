@@ -12,18 +12,24 @@ function initMap() {
 
   var unit_markers = [];
   var infowindows = [];
+  var unit = {};
+  var window_content;
 
   for (var i in gon.rental_units) {
-    var unit = {lat: gon.rental_units[i].latitude,
+    unit = {lat: gon.rental_units[i].latitude,
                      lng: gon.rental_units[i].longitude};
 
+    window_content = '<a href="/rental_units/' + gon.rental_units[i].id + '">' + gon.rental_units[i].address +
+      '</a>';
+
     infowindows[i] = new google.maps.InfoWindow({
-      content: gon.rental_units[i].address
+      content: window_content
     });
 
     unit_markers[i] = new google.maps.Marker({
       position: unit,
       map: map,
+      animation: google.maps.Animation.DROP,
       title: gon.rental_units[i].address,
       infowindow: infowindows[i]
     });
