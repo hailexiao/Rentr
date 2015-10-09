@@ -34,6 +34,7 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'pry'
   gem 'rspec-rails'
+  gem 'dotenv-rails'
 end
 
 group :development do
@@ -55,3 +56,5 @@ gem 'devise'
 gem 'foundation-rails'
 gem 'simple_form'
 gem 'font-awesome-sass'
+gem 'geocoder'
+gem 'gon'

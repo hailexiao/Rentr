@@ -1,6 +1,7 @@
 class RentalUnitsController < ApplicationController
   def index
     @rental_units = RentalUnit.all
+    gon.rental_units = @rental_units
   end
 
   def show

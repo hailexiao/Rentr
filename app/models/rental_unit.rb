@@ -6,6 +6,9 @@ class RentalUnit < ActiveRecord::Base
   belongs_to :neighborhood
   has_many :bills, dependent: :destroy
 
+  geocoded_by :address
+  after_validation :geocode
+
   validates :address, presence: true
 
   validates :number_of_bedrooms, presence: true

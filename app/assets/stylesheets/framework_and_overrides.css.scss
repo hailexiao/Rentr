@@ -10,6 +10,13 @@
   color: white;
   padding: 0 15px; }
 
+#map {
+  margin: auto;
+  margin-bottom: 50px;
+  height: 600px;
+  width: 1024px;
+}
+
 // THESE ARE EXAMPLES YOU CAN MODIFY
 // create mixins using Foundation classes
 @mixin twelve-columns {
@@ -41,6 +48,7 @@
 main {
   @include twelve-columns;
   background-color: #eee;
+  padding-top: 25px;
   }
 section {
   @extend .row;
