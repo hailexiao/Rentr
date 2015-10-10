@@ -12,12 +12,19 @@ function initMap() {
 
   var unit_markers = [];
   var infowindows = [];
-  var unit = {};
+  var unit = [];
   var window_content;
+  var heatMapPoint, heatMapData = [];
 
   for (var i in gon.rental_units) {
-    unit = {lat: gon.rental_units[i].latitude,
-                     lng: gon.rental_units[i].longitude};
+    unit[i] = new google.maps.LatLng(gon.rental_units[i].latitude,
+                                     gon.rental_units[i].longitude);
+
+    // unit[i] = {lat: gon.rental_units[i].latitude,
+    //                  lng: gon.rental_units[i].longitude};
+
+    heatMapPoint = {location: unit[i], weight: gon.rental_units[i].monthly_rent};
+    heatMapData.push(heatMapPoint);
 
     window_content = '<a href="/rental_units/' + gon.rental_units[i].id + '">' + gon.rental_units[i].address +
       '</a>';
@@ -27,7 +34,7 @@ function initMap() {
     });
 
     unit_markers[i] = new google.maps.Marker({
-      position: unit,
+      position: unit[i],
       map: map,
       animation: google.maps.Animation.DROP,
       title: gon.rental_units[i].address,
@@ -39,5 +46,12 @@ function initMap() {
     });
 
   }
+
+  var heatmap = new google.maps.visualization.HeatmapLayer({
+    data: heatMapData,
+    map: map
+  });
+
+  heatmap.setMap(map);
 
 }
