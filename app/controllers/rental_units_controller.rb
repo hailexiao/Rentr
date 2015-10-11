@@ -15,7 +15,8 @@ class RentalUnitsController < ApplicationController
   def create
     existing_unit = unique_address_checker(params[:rental_unit][:address])
     if existing_unit.nil?
-      @rental_unit = RentalUnit.create(rental_unit_params)
+      @rental_unit = RentalUnit.new(rental_unit_params)
+      @rental_unit.tenant = current_tenant
     else
       flash[:notice] = 'Unit already exists! Here it is...'
       redirect_to rental_unit_path(existing_unit)
@@ -26,7 +27,7 @@ class RentalUnitsController < ApplicationController
       flash[:notice] = 'Rental unit added!'
       redirect_to rental_unit_path(@rental_unit)
     else
-      flash[:error] = @rental_unit.errors.full_messages.join (". ")
+      flash[:error] = @rental_unit.errors.full_messages.join(". ") + "."
       render :new
     end
   end

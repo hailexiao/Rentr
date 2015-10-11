@@ -54,6 +54,7 @@ group :test do
   gem 'faker'
   gem 'shoulda-matchers'
   gem 'codeclimate-test-reporter', require: false
+  gem 'poltergeist'
 end
 
 gem 'devise'
@@ -62,3 +63,5 @@ gem 'simple_form'
 gem 'font-awesome-sass'
 gem 'geocoder'
 gem 'gon'
+gem 'carrierwave'
+gem 'fog-aws'

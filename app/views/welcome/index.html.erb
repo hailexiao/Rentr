@@ -1,14 +1,21 @@
-<div class="small-12 columns">
-  <div class="overlay-container">
-    <%= image_tag "TremontStreet.jpg" %>
-    <div class="overlay">
-      <span>Find out what apartments really cost.</span>
+<section class="hero">
+  <div class="row intro">
+    <div class="small-centered medium-uncentered medium-6 large-5 columns">
+      <div class="tech-img"></div></div>
+    <div class="small-centered medium-uncentered medium-10 large-12 columns">
+      <h1>Find out what apartments really cost.</h1>
+      </div>
     </div>
   </div>
-</div>
+</section>
 
 <div class="row">
-  <div class="small-12 columns">
-    <%= link_to 'List of rental units', rental_units_path %>
+  <div class="small-12 medium-8 large-6 small-centered columns">
+    <div class="button-group round">
+      <%= link_to 'Find a rental unit', rental_units_path, class: 'button' %>
+      <% if current_tenant %>
+        <%= link_to 'Add your rental unit', new_rental_unit_path, class: 'button' %>
+      <% end %>
+    </div>
   </div>
 </div>

@@ -2,32 +2,52 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.overlay-container {
-  position: relative;
-}
+.hero {
+  margin-bottom: 25px;
+  height: 80vh;
+  .intro {
+    padding: 3rem;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  h1 {
+    color: #fff;
+    font-size: 1.5rem;
+    line-height: 1.5em;
+    letter-spacing: -0.025em;
+    font-weight: 300;
+    text-align: center;
+  }
+  p {
+    color: #fff;
+    line-height: 1.75em;
+    font-weight: 200;
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  .tech-img {
+    background: url('brick_interior.jpg') no-repeat center center;
+    background-size: cover;
+    height: 9rem;
+    width: 9rem;
+    border-radius: 50%;
+    display: block;
+    margin: 0 auto;
+  }
 
-.overlay-container .overlay {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  padding: 0.4rem;
-  // background-color: rgba(255, 255, 255, 0.7);
-  text-align: center;
-  font: 0/0 a;
-}
-
-.overlay-container .overlay:before {
-  content: ' ';
-  display: inline-block;
-  vertical-align: middle;
-  height: 100%;
-}
-
-.overlay-container .overlay span {
-  font: 64px Helvetica, Arial, sans-serif;
-  display: inline-block;
-  color: white;
-  vertical-align: middle;
+  @media only screen and (min-width: 40.063em) {
+    .tech-img {
+      height: 18rem;
+      width: 18rem;
+    }
+    h1 {
+      padding-top: 4.5rem;
+      text-align: right;
+      font-size: 2.5rem;
+    }
+    p {
+      text-align: right;
+    }
+  }
 }
