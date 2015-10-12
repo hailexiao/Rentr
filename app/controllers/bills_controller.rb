@@ -6,10 +6,6 @@ class BillsController < ApplicationController
     @bills = Bills.all
   end
 
-  def new
-    @bill = Bill.new
-  end
-
   def create
     @rental_unit = RentalUnit.find(params[:rental_unit_id])
     @bill = Bill.new(bill_params)

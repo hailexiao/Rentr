@@ -1,0 +1,12 @@
+<%= simple_form_for [@rental_unit, @bill], remote: true do |f| %>
+  <%= f.input :month %>
+  <%= f.input :amount %>
+  <%= f.button :submit, class: 'button radius', id: 'new-bill' %>
+<% end %>
+
+<script>
+$(document).ready(function(){
+  $("#new_bill").on("ajax:success", $("#newBill").foundation('reveal','close');
+  )
+})
+</script>

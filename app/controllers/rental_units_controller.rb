@@ -6,6 +6,7 @@ class RentalUnitsController < ApplicationController
 
   def show
     @rental_unit = RentalUnit.find(params[:id])
+    @bill = Bill.new
   end
 
   def new
