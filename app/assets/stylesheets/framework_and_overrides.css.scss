@@ -5,10 +5,15 @@
 .top-bar .name {
   font-size: rem-calc(24);
   line-height: 45px; }
+
 .top-bar .name a {
   font-weight: normal;
   color: white;
   padding: 0 15px; }
+
+.top-bar {
+  opacity: 0.8;
+}
 
 #map {
   margin: auto;
@@ -58,7 +63,7 @@ main {
   background-size: cover;
   background-color: #eee;
   padding-top: 25px;
-  height: 100vh;
+  min-height: 100%;
 }
 
 section {

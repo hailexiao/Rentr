@@ -23,12 +23,18 @@
     <li><%= image_tag "http://maps.googleapis.com/maps/api/streetview?size=300x400&location=#{@rental_unit.latitude},#{@rental_unit.longitude}&key=#{ENV['GOOGLE_MAPS_BROWSER_API_KEY']}" %></li>
   </div>
 
+  <% unless @rental_unit.bills.empty? %>
+    <div class="row">
+      <div id="bill-chart"></div>
+    </div>
+  <% end %>
+
   <div class="row">
     <div class="small-6 small-centered columns">
       <ul class="button-group round">
         <li><%= link_to "Back to list of rental units", rental_units_path, class:"button" %></li>
         <% if @rental_unit.tenant == current_tenant %>
-          <li><%= link_to "Add a bill for this unit", "#",
+          <li><%= link_to "Add a bill for this unit", "",
             "data-reveal-id".to_sym => "newBill",
             class:"button", id: "new-bill" %></li>
         <% end %>
