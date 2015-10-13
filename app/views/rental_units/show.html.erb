@@ -20,7 +20,7 @@
           <p><%= "Electric Company: #{@rental_unit.electric_utility.name}" %></p>
           <p><%= "Neighborhood: #{@rental_unit.neighborhood.name}" %></p>
       </li>
-    <li><%= image_tag "http://placecreature.com/300/400" %></li>
+    <li><%= image_tag "http://maps.googleapis.com/maps/api/streetview?size=300x400&location=#{@rental_unit.latitude},#{@rental_unit.longitude}&key=#{ENV['GOOGLE_MAPS_BROWSER_API_KEY']}" %></li>
   </div>
 
   <div class="row">

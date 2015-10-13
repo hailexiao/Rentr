@@ -17,51 +17,48 @@ feature 'add a bill for a rental unit', %(
 
   context 'user is the tenant' do
     before :each do
-      tenant_1 = FactoryGirl.create(:tenant)
-      rental_unit_1 = FactoryGirl.create(:rental_unit, tenant: tenant_1)
+      @rental_unit_1 = FactoryGirl.create(:rental_unit)
+      @tenant_1 = @rental_unit_1.tenant
     end
 
-    scenario 'tenant enters valid information', js: true do
-      sign_in_as_tenant(tenant_1)
+    scenario 'tenant enters valid information' do
+      sign_in_as_tenant(@tenant_1)
 
-      visit rental_unit_bills_path(rental_unit_1)
-      page.execute_script("$('#month_picker').val('11/2014')")
-      # fill_in 'Month', with: 'November'
+      visit rental_unit_path(@rental_unit_1)
+      click_link 'Add a bill for this unit'
+      select 'November', from: 'Month'
       fill_in 'Amount', with: 300
-      click_button 'Submit bill'
+      click_button 'new-bill'
 
       expect(page).to have_content('Bill added!')
     end
 
     scenario 'tenant enters invalid information' do
-      sign_in_as_tenant(tenant_1)
+      sign_in_as_tenant(@tenant_1)
 
-      visit rental_unit_bills_path(rental_unit_1)
-      click_button 'Submit bill'
+      visit rental_unit_path(@rental_unit_1)
+      click_link 'Add a bill for this unit'
+      click_button 'new-bill'
 
-      expect(page).to have_content('can\'t be blank!')
+      expect(page).to have_content('can\'t be blank.')
     end
   end
 
   context 'user is not the tenant' do
     before :each do
-      tenant_1 = FactoryGirl.create(:tenant)
-      tenant_2 = FactoryGirl.create(:tenant)
-      rental_unit_1 = FactoryGirl.create(:rental_unit, tenant: tenant_1)
+      @tenant_1 = FactoryGirl.create(:tenant)
+      @tenant_2 = FactoryGirl.create(:tenant)
+      @rental_unit_1 = FactoryGirl.create(:rental_unit, tenant: @tenant_1)
     end
 
-    scenario 'user enters valid information', js: true do
-      sign_in_as_tenant(tenant_2)
+    scenario 'user enters valid information' do
+      sign_in_as_tenant(@tenant_2)
 
-      visit rental_unit_bills_path(rental_unit_1)
-      page.execute_script("$('#month_picker').val('11/2014')")
-      # fill_in 'Month', with: 'November'
-      fill_in 'Amount', with: 300
-      click_button 'Submit bill'
+      visit rental_unit_path(@rental_unit_1)
 
-      expect(page).to have_content(
-        'Only a tenant of this unit can submit bills!'
-                                  )
+      expect(page).to have_no_content(
+        'Add a bill for this unit'
+        )
     end
   end
 

@@ -3,7 +3,7 @@ class BillsController < ApplicationController
   before_action :set_rental_unit_and_bill, only: [:update, :destroy]
 
   def index
-    @bills = Bills.all
+    @bills = Bills.where(rental_unit_id: params[:rental_unit_id])
   end
 
   def create
@@ -18,6 +18,7 @@ class BillsController < ApplicationController
       flash[:errors] = @bill.errors.full_messages.join(". ")
       redirect_to rental_unit_path(@rental_unit)
     end
+
   end
 
   def update

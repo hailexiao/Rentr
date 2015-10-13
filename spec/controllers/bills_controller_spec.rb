@@ -4,39 +4,33 @@ RSpec.describe BillsController, type: :controller do
 
   before (:each) do
     @bill = FactoryGirl.create(:bill)
+    @rental_unit = @bill.rental_unit
   end
 
   describe "GET #index" do
     it "returns http success" do
-      get :index
+      get :index, rental_unit: @rental_unit
       expect(response).to have_http_status(:success)
     end
   end
 
-  describe "GET #create" do
+  describe "POST #create" do
     it "returns http success" do
-      get :create
+      post :create, rental_unit: @rental_unit
       expect(response).to have_http_status(:success)
     end
   end
 
-  describe "GET #update" do
+  describe "PUT #update" do
     it "returns http success" do
-      get :update
+      put :update
       expect(response).to have_http_status(:success)
     end
   end
 
-  describe "GET #new" do
+  describe "DELETE #destroy" do
     it "returns http success" do
-      get :new
-      expect(response).to have_http_status(:success)
-    end
-  end
-
-  describe "GET #destroy" do
-    it "returns http success" do
-      get :destroy, id: @bill.id
+      delete :destroy, id: @bill.id
       expect(response).to have_http_status(302)
     end
   end

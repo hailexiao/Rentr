@@ -1,0 +1,8 @@
+<% if (flash[:errors] || flash[:notice]) %>
+  $('#bill-message').html("<%= escape_javascript(render partial: 'layouts/messages') %>").show();
+  setTimeout(function(){
+    $("#bill-message").slideUp("slow", function() {
+      $(this).empty();
+    })
+  }, 4500);
+<% end %>

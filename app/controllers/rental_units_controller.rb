@@ -7,6 +7,11 @@ class RentalUnitsController < ApplicationController
   def show
     @rental_unit = RentalUnit.find(params[:id])
     @bill = Bill.new
+
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def new

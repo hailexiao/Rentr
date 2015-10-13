@@ -50,8 +50,8 @@ FactoryGirl.define do
   end
 
   factory :bill do
-    month "November"
+    month 11
     amount { Random.rand(0..300) }
-    tenant
+    rental_unit
   end
 end
