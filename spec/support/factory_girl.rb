@@ -29,7 +29,7 @@ FactoryGirl.define do
             }
     number_of_bedrooms Random.rand(1..7)
     type_of_dwelling "Triple Decker"
-    monthly_rent Random.rand(1500..3500)
+    monthly_rent { Random.rand(1500..3500) }
     tenant
     landlord
     electric_utility
@@ -47,5 +47,11 @@ FactoryGirl.define do
 
   factory :neighborhood do
     name { Faker::Address.city }
+  end
+
+  factory :bill do
+    month 11
+    amount { Random.rand(0..300) }
+    rental_unit
   end
 end

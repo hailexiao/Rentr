@@ -8,6 +8,9 @@ require 'rspec/rails'
 require 'shoulda-matchers'
 require 'capybara/rails'
 require 'capybara/rspec'
+require 'capybara/poltergeist'
+
+Capybara.javascript_driver = :poltergeist
 # Add additional requires below this line. Rails is not loaded until this point!
 
 # Requires supporting ruby files with custom matchers and macros, etc, in

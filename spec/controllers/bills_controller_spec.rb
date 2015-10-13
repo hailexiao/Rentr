@@ -1,35 +1,36 @@
 # require 'rails_helper'
 #
-# RSpec.describe RentalUnitsController, type: :controller do
+# RSpec.describe BillsController, type: :controller do
 #
 #   before (:each) do
-#     @rental_unit = FactoryGirl.create(:rental_unit)
+#     @bill = FactoryGirl.create(:bill)
+#     @rental_unit = @bill.rental_unit
 #   end
 #
 #   describe "GET #index" do
 #     it "returns http success" do
-#       get :index
+#       get :index, rental_unit: @rental_unit
 #       expect(response).to have_http_status(:success)
 #     end
 #   end
 #
-#   describe "GET #show" do
+#   describe "POST #create" do
 #     it "returns http success" do
-#       get :show, id: @rental_unit.id
+#       post :create, rental_unit: @rental_unit
 #       expect(response).to have_http_status(:success)
 #     end
 #   end
 #
-#   describe "GET #new" do
+#   describe "PUT #update" do
 #     it "returns http success" do
-#       get :new
+#       put :update
 #       expect(response).to have_http_status(:success)
 #     end
 #   end
 #
-#   describe "GET #destroy" do
+#   describe "DELETE #destroy" do
 #     it "returns http success" do
-#       get :destroy, id: @rental_unit.id
+#       delete :destroy, id: @bill.id
 #       expect(response).to have_http_status(302)
 #     end
 #   end

@@ -1,6 +1,9 @@
 <div id="map"></div>
 
-<%= link_to 'Add a rental unit', new_rental_unit_path, class: 'button radius' %>
+<div class="row">
+  <div class="small-3 small-centered columns">
+    <%= link_to 'Add a rental unit', new_rental_unit_path, class: 'button radius' %>
+  </div>
+</div>
 
-<%= javascript_include_tag "index_map" %>
 <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?callback=initMap&key=#{ENV["GOOGLE_MAPS_BROWSER_API_KEY"]}&libraries=visualization" %>

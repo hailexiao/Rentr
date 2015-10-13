@@ -7,12 +7,12 @@ feature 'add a rental unit', %(
 ) do
 
   # Acceptance criteria
-  # [] If I put in a valid address, number of bedrooms, type of dwelling,
+  # [*] If I put in a valid address, number of bedrooms, type of dwelling,
   # => monthly rent, electric and gas utility, and neighborhood, I should be
   # => redirected to the show page for the rental unit.
-  # [] If I have missing or invalid information, I should be redirected to the
+  # [*] If I have missing or invalid information, I should be redirected to the
   # => new page for rental units.
-  # [] If I try to add an already existing unit, I am redirected to the show
+  # [*] If I try to add an already existing unit, I am redirected to the show
   # => page for that unit.
 
   context 'add a new unit' do

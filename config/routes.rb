@@ -10,7 +10,9 @@ Rails.application.routes.draw do
 
   resources :tenants, only: :show
   resources :landlords, only: :show
-  resources :rental_units
+  resources :rental_units do
+    resources :bills, only: [:index, :update, :create, :destroy]
+  end
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

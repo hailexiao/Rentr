@@ -20,6 +20,7 @@ class RentalUnit < ActiveRecord::Base
 
   validates :monthly_rent, presence: true
   validates :monthly_rent,
-    numericality: { only_integer: true }
+    numericality: { only_integer: true,
+                    greater_than: 0 }
 
 end

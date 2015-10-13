@@ -1,9 +1,38 @@
-<h2><%= @rental_unit.address %></h2>
-<%= @rental_unit.type_of_dwelling %><br>
-<%= "#{@rental_unit.number_of_bedrooms} bedrooms" %><br>
-<%= "Rent: $#{@rental_unit.monthly_rent} per month" %><br>
-<%= "Gas Company: #{@rental_unit.gas_utility.name}" %><br>
-<%= "Electric Company: #{@rental_unit.electric_utility.name}" %><br>
-<%= "Neighborhood: #{@rental_unit.neighborhood.name}" %><br>
+<div id="newBill" class="reveal-modal" data-reveal aria-labelledby="New Bill" aria-hidden="true" role="dialog">
+  <h2 id="modalTitle">New Bill</h2>
+  <%= render "bills/new_bill_form" %>
+  <a class="close-reveal-modal" aria-label="Close">&#215;</a>
+</div>
 
-<%= link_to "Back to list of rental units", rental_units_path, class:"button radius" %>
+<div class="rental-unit-box">
+  <div class="row">
+    <div class="small-12 small-centered columns" id="rental-unit-title">
+      <h2><%= @rental_unit.address %></h2>
+    </div>
+  </div>
+
+  <div class="row">
+    <ul class="small-block-grid-2">
+      <li><p><%= @rental_unit.type_of_dwelling %></p>
+          <p><%= "#{@rental_unit.number_of_bedrooms} bedrooms" %></p>
+          <p><%= "Rent: $#{@rental_unit.monthly_rent} per month" %></p>
+          <p><%= "Gas Company: #{@rental_unit.gas_utility.name}" %></p>
+          <p><%= "Electric Company: #{@rental_unit.electric_utility.name}" %></p>
+          <p><%= "Neighborhood: #{@rental_unit.neighborhood.name}" %></p>
+      </li>
+    <li><%= image_tag "http://maps.googleapis.com/maps/api/streetview?size=300x400&location=#{@rental_unit.latitude},#{@rental_unit.longitude}&key=#{ENV['GOOGLE_MAPS_BROWSER_API_KEY']}" %></li>
+  </div>
+
+  <div class="row">
+    <div class="small-6 small-centered columns">
+      <ul class="button-group round">
+        <li><%= link_to "Back to list of rental units", rental_units_path, class:"button" %></li>
+        <% if @rental_unit.tenant == current_tenant %>
+          <li><%= link_to "Add a bill for this unit", "#",
+            "data-reveal-id".to_sym => "newBill",
+            class:"button", id: "new-bill" %></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>

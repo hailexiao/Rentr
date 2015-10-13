@@ -1,12 +1,10 @@
 <%= simple_form_for @rental_unit do |f| %>
   <%= f.input :address %>
-  <%= f.input :number_of_bedrooms, collection: 0..7 %>
+  <%= f.input :number_of_bedrooms, collection: 0..7, selected: 0 %>
   <%= f.input :type_of_dwelling %>
   <%= f.input :monthly_rent %>
-  <%= f.association :tenant %>
-  <%= f.association :landlord %>
-  <%= f.association :gas_utility %>
-  <%= f.association :electric_utility %>
+  <%= f.association :gas_utility, selected: "National Grid" %>
+  <%= f.association :electric_utility, selected: "Eversource" %>
   <%= f.association :neighborhood %>
   <%= f.button :submit, class: 'button radius' %>
 <% end %>
