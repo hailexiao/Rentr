@@ -18,7 +18,6 @@ class BillsController < ApplicationController
       flash[:errors] = @bill.errors.full_messages.join(". ")
       redirect_to rental_unit_path(@rental_unit)
     end
-
   end
 
   def update

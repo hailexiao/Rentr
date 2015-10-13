@@ -58,7 +58,7 @@ feature 'add a bill for a rental unit', %(
 
       expect(page).to have_no_content(
         'Add a bill for this unit'
-        )
+      )
     end
   end
 
