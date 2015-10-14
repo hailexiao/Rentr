@@ -49,11 +49,13 @@ end
 group :test do
   gem 'coveralls', require: false
   gem 'capybara'
+  gem 'launchy'
   gem 'factory_girl'
+  gem 'database_cleaner'
   gem 'faker'
   gem 'shoulda-matchers'
   gem 'codeclimate-test-reporter', require: false
-  gem 'poltergeist'
+  gem 'selenium-webdriver'
 end
 
 gem 'devise'
@@ -64,3 +66,4 @@ gem 'geocoder'
 gem 'gon'
 gem 'carrierwave'
 gem 'fog-aws'
+gem 'puma'

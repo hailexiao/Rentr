@@ -21,19 +21,19 @@ feature 'add a bill for a rental unit', %(
       @tenant_1 = @rental_unit_1.tenant
     end
 
-    scenario 'tenant enters valid information' do
+    scenario 'tenant enters valid information', js: true do
       sign_in_as_tenant(@tenant_1)
 
       visit rental_unit_path(@rental_unit_1)
       click_link 'Add a bill for this unit'
-      select 'November', from: 'Month'
+      select 'November', from: 'bill_month'
       fill_in 'Amount', with: 300
       click_button 'new-bill'
 
       expect(page).to have_content('Bill added!')
     end
 
-    scenario 'tenant enters invalid information' do
+    scenario 'tenant enters invalid information', js: true do
       sign_in_as_tenant(@tenant_1)
 
       visit rental_unit_path(@rental_unit_1)
