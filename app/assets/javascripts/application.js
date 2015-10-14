@@ -16,7 +16,6 @@
 //= require application_settings
 //= require markerclusterer
 //= require index_map
-//= require bill_charts
 
 $(function() {
   $(document).foundation();

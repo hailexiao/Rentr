@@ -11,10 +11,6 @@
   color: white;
   padding: 0 15px; }
 
-.top-bar {
-  opacity: 0.8;
-}
-
 #map {
   margin: auto;
   margin-bottom: 50px;
@@ -86,4 +82,21 @@ img {
 .rental-unit-box {
   background-color: rgba(255,255,255,0.2);
   border-radius: 10px;
+}
+
+.rental-text-box {
+  background-color: rgba(255,255,255,0.7);
+  border-radius: 10px;
+}
+
+.authform {
+  background-color: rgba(255,255,255,0.2);
+  border-radius: 10px;
+  padding: 25px;
+}
+
+#bill-chart {
+  margin: 5px;
+  border-radius: 5px;
+  background-color: rgba(255,255,255,0.5);
 }
