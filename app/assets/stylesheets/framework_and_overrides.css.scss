@@ -5,6 +5,7 @@
 .top-bar .name {
   font-size: rem-calc(24);
   line-height: 45px; }
+
 .top-bar .name a {
   font-weight: normal;
   color: white;
@@ -58,7 +59,7 @@ main {
   background-size: cover;
   background-color: #eee;
   padding-top: 25px;
-  height: 100vh;
+  min-height: 100%;
 }
 
 section {
@@ -81,4 +82,21 @@ img {
 .rental-unit-box {
   background-color: rgba(255,255,255,0.2);
   border-radius: 10px;
+}
+
+.rental-text-box {
+  background-color: rgba(255,255,255,0.7);
+  border-radius: 10px;
+}
+
+.authform {
+  background-color: rgba(255,255,255,0.2);
+  border-radius: 10px;
+  padding: 25px;
+}
+
+#bill-chart {
+  margin: 5px;
+  border-radius: 5px;
+  background-color: rgba(255,255,255,0.5);
 }

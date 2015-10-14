@@ -6,4 +6,5 @@
   </div>
 </div>
 
-<%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?callback=initMap&key=#{ENV["GOOGLE_MAPS_BROWSER_API_KEY"]}&libraries=visualization" %>
+<% google_maps_url = "https://maps.googleapis.com/maps/api/js?callback=initMap&key=#{ENV['GOOGLE_MAPS_BROWSER_API_KEY']}&libraries=visualization" %>
+<script defer src=<%="#{google_maps_url}"%> %></script>

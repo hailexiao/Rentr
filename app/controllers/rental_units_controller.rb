@@ -6,6 +6,7 @@ class RentalUnitsController < ApplicationController
 
   def show
     @rental_unit = RentalUnit.find(params[:id])
+    gon.rental_unit = @rental_unit
     @bill = Bill.new
 
     respond_to do |format|

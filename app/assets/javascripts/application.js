@@ -14,7 +14,9 @@
 //= require jquery_ujs
 //= require foundation
 //= require application_settings
-//= require_tree .
+//= require markerclusterer
+//= require index_map
+
 $(function() {
   $(document).foundation();
 });
