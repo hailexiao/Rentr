@@ -55,7 +55,7 @@
 
 main {
   @include twelve-columns;
-  background: url('TremontStreet-blur.jpg') no-repeat center center fixed;
+  background: image-url('TremontStreet-blur.jpg') no-repeat center center fixed;
   background-size: cover;
   background-color: #eee;
   padding-top: 25px;
