@@ -52,7 +52,7 @@ class RentalUnitsController < ApplicationController
       permit(
         :address, :number_of_bedrooms, :type_of_dwelling, :monthly_rent,
         :gas_utility_id, :electric_utility_id, :tenant_id, :landlord_id,
-        :neighborhood_id
+        :neighborhood_id, {photos: []}
             )
   end
 

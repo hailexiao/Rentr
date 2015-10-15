@@ -6,5 +6,6 @@
   <%= f.association :gas_utility, selected: "National Grid" %>
   <%= f.association :electric_utility, selected: "Eversource" %>
   <%= f.association :neighborhood %>
+  <%= f.file_field :photos, multiple: true %>
   <%= f.button :submit, class: 'button radius' %>
 <% end %>

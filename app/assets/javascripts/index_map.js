@@ -43,8 +43,6 @@ function initMap() {
 
   }
 
-  debugger;
-
   var mc = new MarkerClusterer(map, unit_markers);
 
   initHeatMap(map, heatMapData);

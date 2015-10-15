@@ -10,6 +10,7 @@
 $(document).ready(
   $("#new_bill").on("ajax:success", function(event, data, status, xhr) {
     $("#newBill").foundation('reveal','close');
+    updateChart(<%= @bill.month %>,<%= @rental_unit.bills.where(month: @bill.month).average(:amount).to_i %>);
   }
   )
 )
