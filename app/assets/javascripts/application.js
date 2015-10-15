@@ -16,6 +16,7 @@
 //= require application_settings
 //= require markerclusterer
 //= require index_map
+//= require apartment_photos
 
 $(function() {
   $(document).foundation();

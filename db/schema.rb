@@ -81,7 +81,7 @@ ActiveRecord::Schema.define(version: 20151015180847) do
     t.datetime "updated_at",          null: false
     t.float    "latitude"
     t.float    "longitude"
-    t.string   "photo",                            array: true
+    t.string   "photos",                           array: true
   end
 
   add_index "rental_units", ["address"], name: "index_rental_units_on_address", unique: true, using: :btree

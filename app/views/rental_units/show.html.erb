@@ -20,8 +20,22 @@
           <p><%= "Electric Company: #{@rental_unit.electric_utility.name}" %></p>
           <p><%= "Neighborhood: #{@rental_unit.neighborhood.name}" %></p>
       </li>
-    <li><%= image_tag "https://maps.googleapis.com/maps/api/staticmap?size=300x400&markers=#{@rental_unit.latitude},#{@rental_unit.longitude}&key=#{ENV['GOOGLE_MAPS_BROWSER_API_KEY']}" %></li>
-    <li><%= image_tag "http://maps.googleapis.com/maps/api/streetview?size=300x400&location=#{@rental_unit.latitude},#{@rental_unit.longitude}&key=#{ENV['GOOGLE_MAPS_BROWSER_API_KEY']}" %></li>
+    <li><%= image_tag "https://maps.googleapis.com/maps/api/staticmap?size=300x300&markers=#{@rental_unit.latitude},#{@rental_unit.longitude}&key=#{ENV['GOOGLE_MAPS_BROWSER_API_KEY']}" %></li>
+    <% if @rental_unit.photos.empty? %>
+      <li><%= image_tag "http://maps.googleapis.com/maps/api/streetview?size=300x400&location=#{@rental_unit.latitude},#{@rental_unit.longitude}&key=#{ENV['GOOGLE_MAPS_BROWSER_API_KEY']}" %></li>
+    <% else %>
+      <li><div class="apartment-photos">
+        <% @rental_unit.photos.each do |photo| %>
+          <div><%= image_tag photo %></div>
+        <% end %>
+      </div></li>
+    <% end %>
+  </div>
+
+  <div class="row">
+    <div class="small-12 columns">
+
+    </div>
   </div>
 
   <% unless @rental_unit.bills.empty? %>
