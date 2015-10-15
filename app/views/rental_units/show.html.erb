@@ -12,23 +12,46 @@
   </div>
 
   <div class="row">
-    <ul class="small-block-grid-2">
-      <li><p><%= @rental_unit.type_of_dwelling %></p>
+    <ul class="small-block-grid-3">
+      <li class="rental-text-box"><p><%= @rental_unit.type_of_dwelling %></p>
           <p><%= "#{@rental_unit.number_of_bedrooms} bedrooms" %></p>
           <p><%= "Rent: $#{@rental_unit.monthly_rent} per month" %></p>
           <p><%= "Gas Company: #{@rental_unit.gas_utility.name}" %></p>
           <p><%= "Electric Company: #{@rental_unit.electric_utility.name}" %></p>
           <p><%= "Neighborhood: #{@rental_unit.neighborhood.name}" %></p>
       </li>
-    <li><%= image_tag "http://maps.googleapis.com/maps/api/streetview?size=300x400&location=#{@rental_unit.latitude},#{@rental_unit.longitude}&key=#{ENV['GOOGLE_MAPS_BROWSER_API_KEY']}" %></li>
+    <li><%= image_tag "https://maps.googleapis.com/maps/api/staticmap?size=300x300&markers=#{@rental_unit.latitude},#{@rental_unit.longitude}&key=#{ENV['GOOGLE_MAPS_BROWSER_API_KEY']}" %></li>
+    <% if @rental_unit.photos.empty? %>
+      <li><%= image_tag "http://maps.googleapis.com/maps/api/streetview?size=300x400&location=#{@rental_unit.latitude},#{@rental_unit.longitude}&key=#{ENV['GOOGLE_MAPS_BROWSER_API_KEY']}" %></li>
+    <% else %>
+      <li><div class="apartment-photos">
+        <% @rental_unit.photos.each do |photo| %>
+          <div><%= image_tag photo %></div>
+        <% end %>
+      </div></li>
+    <% end %>
   </div>
+
+  <div class="row">
+    <div class="small-12 columns">
+
+    </div>
+  </div>
+
+  <% unless @rental_unit.bills.empty? %>
+    <div class="row">
+      <div class="small-10 small-centered columns">
+        <div id="bill-chart"></div>
+      </div>
+    </div>
+  <% end %>
 
   <div class="row">
     <div class="small-6 small-centered columns">
       <ul class="button-group round">
         <li><%= link_to "Back to list of rental units", rental_units_path, class:"button" %></li>
-        <% if @rental_unit.tenant == current_tenant %>
-          <li><%= link_to "Add a bill for this unit", "#",
+        <% if @rental_unit.tenant == current_tenant && !@rental_unit.utilities_included? %>
+          <li><%= link_to "Add a bill for this unit", "",
             "data-reveal-id".to_sym => "newBill",
             class:"button", id: "new-bill" %></li>
         <% end %>
@@ -36,3 +59,49 @@
     </div>
   </div>
 </div>
+
+<script type="text/javascript">
+
+  // Load the Visualization API and the piechart package.
+  google.load('visualization', '1.0', {'packages':['corechart']});
+
+  // Set a callback to run when the Google Visualization API is loaded.
+  google.setOnLoadCallback(drawChart);
+
+
+
+  // Callback that creates and populates a data table,
+  // instantiates the pie chart, passes in the data and
+  // draws it.
+
+  function drawChart() {
+
+    var monthNames = ["January", "February", "March", "April", "May", "June",
+      "July", "August", "September", "October", "November", "December"
+      ];
+
+    // Create the data table.
+    var data = new google.visualization.DataTable();
+    data.addColumn('string', 'Month');
+    data.addColumn('number', 'Average amount ($)');
+    <% (1..12).each do |m| %>
+     data.addRow([monthNames[<%= m-1 %>],
+       <%= @rental_unit.bills.where(month: m).average(:amount).to_i %>]);
+    <% end %>
+
+
+    // Set chart options
+    var options = {'title':'Utility Bills by Month',
+                  legend: {position: 'none'},
+                  backgroundColor: 'transparent',
+
+                  vAxis: {format: 'currency'}
+                 };
+
+    // Instantiate and draw our chart, passing in some options.
+    var chart = new google.visualization.ColumnChart(document.getElementById('bill-chart'));
+    chart.draw(data, options);
+
+  }
+
+   </script>

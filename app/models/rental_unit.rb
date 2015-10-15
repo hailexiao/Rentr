@@ -6,6 +6,8 @@ class RentalUnit < ActiveRecord::Base
   belongs_to :neighborhood
   has_many :bills, dependent: :destroy
 
+  mount_uploaders :photos, ApartmentUploader
+
   geocoded_by :address
   after_validation :geocode
 

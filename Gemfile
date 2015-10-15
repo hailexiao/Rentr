@@ -1,5 +1,4 @@
 source 'https://rubygems.org'
-ruby "2.2.3"
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.4'
@@ -50,11 +49,13 @@ end
 group :test do
   gem 'coveralls', require: false
   gem 'capybara'
+  gem 'launchy'
   gem 'factory_girl'
+  gem 'database_cleaner'
   gem 'faker'
   gem 'shoulda-matchers'
   gem 'codeclimate-test-reporter', require: false
-  gem 'poltergeist'
+  gem 'selenium-webdriver'
 end
 
 gem 'devise'
@@ -63,5 +64,7 @@ gem 'simple_form'
 gem 'font-awesome-sass'
 gem 'geocoder'
 gem 'gon'
-gem 'carrierwave'
+gem 'mini_magick'
+gem 'carrierwave', github: 'carrierwaveuploader/carrierwave'
 gem 'fog-aws'
+gem 'puma'

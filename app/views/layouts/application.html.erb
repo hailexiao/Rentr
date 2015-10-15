@@ -5,10 +5,14 @@
     <title><%= content_for?(:title) ? yield(:title) : "Rentr" %></title>
     <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Rentr" %>">
     <%= stylesheet_link_tag 'application', media: 'all' %>
+    <%= stylesheet_link_tag '//cdn.jsdelivr.net/jquery.slick/1.5.8/slick.css' %>
+    <%= stylesheet_link_tag '//cdn.jsdelivr.net/jquery.slick/1.5.8/slick-theme.css' %>
     <%# Modernizr is required for Zurb Foundation %>
     <%= include_gon %>
     <%= javascript_include_tag 'vendor/modernizr' %>
     <%= javascript_include_tag 'application' %>
+    <%= javascript_include_tag 'https://www.google.com/jsapi' %>
+    <%= javascript_include_tag '//cdn.jsdelivr.net/jquery.slick/1.5.8/slick.min.js' %>
     <%= csrf_meta_tags %>
   </head>
   <body>

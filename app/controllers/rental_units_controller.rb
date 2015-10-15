@@ -6,6 +6,7 @@ class RentalUnitsController < ApplicationController
 
   def show
     @rental_unit = RentalUnit.find(params[:id])
+    gon.rental_unit = @rental_unit
     @bill = Bill.new
 
     respond_to do |format|
@@ -51,7 +52,7 @@ class RentalUnitsController < ApplicationController
       permit(
         :address, :number_of_bedrooms, :type_of_dwelling, :monthly_rent,
         :gas_utility_id, :electric_utility_id, :tenant_id, :landlord_id,
-        :neighborhood_id
+        :neighborhood_id, photos: []
             )
   end
 

@@ -1,5 +1,3 @@
-var map;
-
 function initMap() {
   var mapOptions = {
    zoom: 12,
@@ -7,23 +5,21 @@ function initMap() {
    mapTypeId: google.maps.MapTypeId.TERRAIN
   };
 
-  map = new google.maps.Map(document.getElementById('map'),
+  var map = new google.maps.Map(document.getElementById('map'),
        mapOptions);
 
   var unit_markers = [];
   var infowindows = [];
   var unit = [];
   var window_content;
-  var heatMapPoint, heatMapData = [];
+  var heatMapPoint;
+  var heatMapData = [];
 
   for (var i in gon.rental_units) {
     unit[i] = new google.maps.LatLng(gon.rental_units[i].latitude,
                                      gon.rental_units[i].longitude);
 
-    // unit[i] = {lat: gon.rental_units[i].latitude,
-    //                  lng: gon.rental_units[i].longitude};
-
-    heatMapPoint = {location: unit[i], weight: gon.rental_units[i].monthly_rent};
+    heatMapPoint = { location: unit[i], weight: gon.rental_units[i].monthly_rent };
     heatMapData.push(heatMapPoint);
 
     window_content = '<a href="/rental_units/' + gon.rental_units[i].id + '">' + gon.rental_units[i].address +
@@ -47,11 +43,17 @@ function initMap() {
 
   }
 
+  var mc = new MarkerClusterer(map, unit_markers);
+
+  initHeatMap(map, heatMapData);
+
+}
+
+function initHeatMap(map, heatMapData) {
   var heatmap = new google.maps.visualization.HeatmapLayer({
     data: heatMapData,
     map: map
   });
 
   heatmap.setMap(map);
-
 }

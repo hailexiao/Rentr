@@ -2,7 +2,7 @@
 <ul class="right">
   <%- if current_tenant || current_landlord -%>
     <% if current_tenant %>
-      <li><%= link_to 'Profile', tenant_path(current_tenant) %></li>
+      <li><%= link_to "#{current_tenant.email}", tenant_path(current_tenant) %></li>
       <li><%= link_to 'Edit My Account', edit_tenant_registration_path %></li>
       <li><%= link_to 'Sign Out', destroy_tenant_session_path, method: :delete %></li>
     <% else %>
@@ -26,4 +26,4 @@
         </ul>
     </li>
   <%- end -%>
-</ul>  
+</ul>

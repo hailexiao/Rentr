@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151007203005) do
+ActiveRecord::Schema.define(version: 20151015212314) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -68,19 +68,21 @@ ActiveRecord::Schema.define(version: 20151007203005) do
   add_index "neighborhoods", ["name"], name: "index_neighborhoods_on_name", unique: true, using: :btree
 
   create_table "rental_units", force: :cascade do |t|
-    t.string   "address",             null: false
-    t.integer  "number_of_bedrooms",  null: false
-    t.string   "type_of_dwelling",    null: false
-    t.integer  "monthly_rent",        null: false
+    t.string   "address",                             null: false
+    t.integer  "number_of_bedrooms",                  null: false
+    t.string   "type_of_dwelling",                    null: false
+    t.integer  "monthly_rent",                        null: false
     t.integer  "tenant_id"
     t.integer  "landlord_id"
-    t.integer  "electric_utility_id", null: false
-    t.integer  "gas_utility_id",      null: false
-    t.integer  "neighborhood_id",     null: false
-    t.datetime "created_at",          null: false
-    t.datetime "updated_at",          null: false
+    t.integer  "electric_utility_id",                 null: false
+    t.integer  "gas_utility_id",                      null: false
+    t.integer  "neighborhood_id",                     null: false
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
     t.float    "latitude"
     t.float    "longitude"
+    t.string   "photos",                                           array: true
+    t.boolean  "utilities_included",  default: false
   end
 
   add_index "rental_units", ["address"], name: "index_rental_units_on_address", unique: true, using: :btree
