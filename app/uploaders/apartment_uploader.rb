@@ -29,12 +29,12 @@ class ApartmentUploader < CarrierWave::Uploader::Base
   # process scale: [300, 400]
   #
   # def scale(width, height)
-  #   # do something
+  #   do something
   # end
 
   # Create different versions of your uploaded files:
   # version :thumb do
-    process :resize_to_fit => [300, 400]
+  process resize_to_fit: [300, 400]
   # end
 
   # Add a white list of extensions which are allowed to be uploaded.

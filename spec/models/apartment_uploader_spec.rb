@@ -21,7 +21,7 @@ RSpec.describe ApartmentUploader do
 
   context 'full size version' do
     it "should resize the image to 300 pixels wide" do
-      @uploader.should be_no_larger_than(300,400)
+      @uploader.should be_no_larger_than(300, 400)
     end
   end
 end
