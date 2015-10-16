@@ -25,4 +25,17 @@ class RentalUnit < ActiveRecord::Base
     numericality: { only_integer: true,
                     greater_than: 0 }
 
+  def street_address
+    self.address.split(',')[0]
+  end
+
+  def city_state_zip
+    address_array = self.address.split(',')
+    if address_array.last.to_i !=0
+      return address_array.last(3).join
+    else
+      return address_array.last(2).join
+    end
+  end
+
 end
