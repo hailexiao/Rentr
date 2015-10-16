@@ -2,6 +2,7 @@ class RentalUnitsController < ApplicationController
   def index
     @rental_units = RentalUnit.all
     gon.rental_units = @rental_units
+    gon.average_bills = @rental_units.map { |unit| unit.bills.average(:amount).to_i }
   end
 
   def show
@@ -30,6 +31,13 @@ class RentalUnitsController < ApplicationController
       return
     end
 
+    if @rental_unit.utilities_included?
+      estimated_bill = create_bill(@rental_unit)
+      (1..12).each do |month|
+        Bill.create(month: month, amount: estimated_bill, rental_unit: @rental_unit)
+      end
+    end
+
     if @rental_unit.save
       flash[:notice] = 'Rental unit added!'
       redirect_to rental_unit_path(@rental_unit)
@@ -42,19 +50,25 @@ class RentalUnitsController < ApplicationController
   def destroy
     @rental_unit = RentalUnit.find(params[:id])
     authorize_tenant(@rental_unit)
+    @rental_unit.destroy
     flash[:success] = 'Rental unit deleted.'
     redirect_to rental_units_path
   end
 
   private
 
+  def create_bill(rental_unit)
+    zillow_request = Zillow.new(rental_unit)
+    rent_zestimate = zillow_request.get_rent_zestimate
+    rental_unit.monthly_rent - rent_zestimate
+  end
+
   def rental_unit_params
     params.require(:rental_unit).
       permit(
         :address, :number_of_bedrooms, :type_of_dwelling, :monthly_rent,
         :gas_utility_id, :electric_utility_id, :tenant_id, :landlord_id,
-        :neighborhood_id, photos: []
-            )
+        :neighborhood_id, :utilities_included, photos: [])
   end
 
   def unique_address_checker(addr)
