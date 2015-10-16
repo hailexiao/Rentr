@@ -9,11 +9,13 @@
 Neighborhood.create(
   [
   { name: 'Chinatown' }, { name: 'Back Bay' }, { name: 'Financial District' },
-  { name: 'North End' }, { name: 'South End' }, { name: 'West End' },
+  { name: 'North End' }, { name: 'South End' }, { name: 'Seaport' },
+  { name: 'West End' }, { name: 'North Shore' }, { name: 'South Shore' },
   { name: 'South Boston' }, { name: 'East Boston' }, { name: 'Charlestown' },
   { name: 'Allston' }, { name: 'Brighton' }, { name: 'Fenway' },
   { name: 'Jamaica Plain' }, { name: 'Roxbury' }, { name: 'Dorchester' },
-  { name: 'Cambridge' }, { name: 'Somerville' }
+  { name: 'Cambridge' }, { name: 'Somerville' }, { name: 'Arlington' },
+  { name: 'Burlington' }
   ]
                    )
 
