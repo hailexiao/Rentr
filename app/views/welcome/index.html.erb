@@ -10,11 +10,20 @@
 </section>
 
 <div class="row">
-  <div class="small-12 medium-8 large-6 small-centered columns">
-    <div class="button-group round">
+  <div class="small-12 medium-8 large-6 columns show-for-medium-up">
+    <div class="button-group even-2 round">
       <%= link_to 'Find a rental unit', rental_units_path, class: 'button' %>
       <% if current_tenant %>
         <%= link_to 'Add your rental unit', new_rental_unit_path, class: 'button' %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="small-12 medium-8 large-6 columns hide-for-medium-up">
+    <div class="button-group even-2 round">
+      <%= link_to 'Find a rental unit', rental_units_path, class: 'button tiny' %>
+      <% if current_tenant %>
+        <%= link_to 'Add your rental unit', new_rental_unit_path, class: 'button tiny' %>
       <% end %>
     </div>
   </div>

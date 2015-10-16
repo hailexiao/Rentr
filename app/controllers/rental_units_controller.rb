@@ -40,7 +40,8 @@ class RentalUnitsController < ApplicationController
   end
 
   def destroy
-    RentalUnit.find(params[:id]).destroy
+    @rental_unit = RentalUnit.find(params[:id])
+    authorize_tenant(@rental_unit)
     flash[:success] = 'Rental unit deleted.'
     redirect_to rental_units_path
   end
@@ -63,6 +64,12 @@ class RentalUnitsController < ApplicationController
       nil
     else
       rental_unit.first
+    end
+  end
+
+  def authorize_tenant(rental_unit)
+    unless current_tenant == rental_unit.tenant
+      raise ActionController::RoutingError.new("Not Found")
     end
   end
 end
