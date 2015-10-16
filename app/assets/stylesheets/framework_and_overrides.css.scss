@@ -14,8 +14,8 @@
 #map {
   margin: auto;
   margin-bottom: 50px;
-  height: 600px;
-  width: 1024px;
+  height: 80vh;
+  width: 90vw;
 }
 
 // THESE ARE EXAMPLES YOU CAN MODIFY
@@ -87,6 +87,7 @@ img {
 .rental-text-box {
   background-color: rgba(255,255,255,0.7);
   border-radius: 10px;
+  margin-bottom: 1em;
 }
 
 .authform {
@@ -98,5 +99,6 @@ img {
 #bill-chart {
   margin: 5px;
   border-radius: 5px;
+  height: 25vh;
   background-color: rgba(255,255,255,0.5);
 }

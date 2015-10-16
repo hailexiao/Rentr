@@ -4,6 +4,16 @@
   <a class="close-reveal-modal" aria-label="Close">&#215;</a>
 </div>
 
+<div id="confirmDelete" class="reveal-modal" data-reveal aria-labelledby="Delete Unit?" aria-hidden="true" role="dialog">
+  <h2 id="modalTitle">Delete Unit?</h2>
+  <ul class="button-group even-2 round">
+    <li><%= link_to "Yes", rental_unit_path(@rental_unit), method: :delete,
+            class: "button alert" %></li>
+    <li><%= link_to "No", "", class: "button success", id: "noDelete" %></li>
+  </ul>
+  <a class="close-reveal-modal" aria-label="Close">&#215;</a>
+</div>
+
 <div class="rental-unit-box">
   <div class="row">
     <div class="small-12 small-centered columns" id="rental-unit-title">
@@ -12,48 +22,65 @@
   </div>
 
   <div class="row">
-    <ul class="small-block-grid-3">
-      <li class="rental-text-box"><p><%= @rental_unit.type_of_dwelling %></p>
-          <p><%= "#{@rental_unit.number_of_bedrooms} bedrooms" %></p>
-          <p><%= "Rent: $#{@rental_unit.monthly_rent} per month" %></p>
-          <p><%= "Gas Company: #{@rental_unit.gas_utility.name}" %></p>
-          <p><%= "Electric Company: #{@rental_unit.electric_utility.name}" %></p>
-          <p><%= "Neighborhood: #{@rental_unit.neighborhood.name}" %></p>
-      </li>
-    <li><%= image_tag "https://maps.googleapis.com/maps/api/staticmap?size=300x300&markers=#{@rental_unit.latitude},#{@rental_unit.longitude}&key=#{ENV['GOOGLE_MAPS_BROWSER_API_KEY']}" %></li>
-    <% if @rental_unit.photos.empty? %>
-      <li><%= image_tag "http://maps.googleapis.com/maps/api/streetview?size=300x400&location=#{@rental_unit.latitude},#{@rental_unit.longitude}&key=#{ENV['GOOGLE_MAPS_BROWSER_API_KEY']}" %></li>
-    <% else %>
-      <li><div class="apartment-photos">
-        <% @rental_unit.photos.each do |photo| %>
-          <div><%= image_tag photo %></div>
-        <% end %>
-      </div></li>
-    <% end %>
-  </div>
-
-  <div class="row">
     <div class="small-12 columns">
-
+      <ul class="small-block-grid-1 medium-block-grid-3">
+        <li class="rental-text-box"><p><%= @rental_unit.type_of_dwelling %></p>
+            <p><%= "#{@rental_unit.number_of_bedrooms} bedrooms" %></p>
+            <p><%= "Rent: $#{@rental_unit.monthly_rent} per month" %></p>
+            <p><%= "Gas Company: #{@rental_unit.gas_utility.name}" %></p>
+            <p><%= "Electric Company: #{@rental_unit.electric_utility.name}" %></p>
+            <p><%= "Neighborhood: #{@rental_unit.neighborhood.name}" %></p>
+        </li>
+      <li><%= image_tag "https://maps.googleapis.com/maps/api/staticmap?size=300x300&markers=#{@rental_unit.latitude},#{@rental_unit.longitude}&key=#{ENV['GOOGLE_MAPS_BROWSER_API_KEY']}" %></li>
+      <% if @rental_unit.photos.empty? %>
+        <li><%= image_tag "http://maps.googleapis.com/maps/api/streetview?size=300x400&location=#{@rental_unit.latitude},#{@rental_unit.longitude}&key=#{ENV['GOOGLE_MAPS_BROWSER_API_KEY']}" %></li>
+      <% else %>
+        <li><div class="apartment-photos">
+          <% @rental_unit.photos.each do |photo| %>
+            <div><%= image_tag photo %></div>
+          <% end %>
+        </div></li>
+      <% end %>
     </div>
   </div>
 
   <% unless @rental_unit.bills.empty? %>
     <div class="row">
-      <div class="small-10 small-centered columns">
+      <div class="small-12 small-centered columns">
         <div id="bill-chart"></div>
       </div>
     </div>
   <% end %>
 
   <div class="row">
-    <div class="small-6 small-centered columns">
-      <ul class="button-group round">
+    <div class="small-12 columns show-for-medium-up">
+      <ul class="button-group even-3 round">
         <li><%= link_to "Back to list of rental units", rental_units_path, class:"button" %></li>
-        <% if @rental_unit.tenant == current_tenant && !@rental_unit.utilities_included? %>
-          <li><%= link_to "Add a bill for this unit", "",
-            "data-reveal-id".to_sym => "newBill",
-            class:"button", id: "new-bill" %></li>
+        <% if @rental_unit.tenant == current_tenant %>
+          <% if !@rental_unit.utilities_included? %>
+            <li><%= link_to "Add a bill for this unit", "",
+              "data-reveal-id".to_sym => "newBill",
+              class:"button", id: "new-bill" %></li>
+          <% end %>
+        <li><%= link_to "Delete this unit", "",
+          "data-reveal-id".to_sym => "confirmDelete",
+          class:"button alert", id: "confirm-delete" %></li>
+        <% end %>
+      </ul>
+    </div>
+
+    <div class="small-12 columns hide-for-medium-up">
+      <ul class="button-group even-3 round">
+        <li><%= link_to "Back to list of rental units", rental_units_path, class:"button tiny" %></li>
+        <% if @rental_unit.tenant == current_tenant %>
+          <% if !@rental_unit.utilities_included? %>
+            <li><%= link_to "Add a bill for this unit", "",
+              "data-reveal-id".to_sym => "newBill",
+              class:"button tiny", id: "new-bill" %></li>
+          <% end %>
+        <li><%= link_to "Delete this unit", "",
+          "data-reveal-id".to_sym => "confirmDelete",
+          class:"button alert tiny", id: "confirm-delete" %></li>
         <% end %>
       </ul>
     </div>
@@ -62,13 +89,8 @@
 
 <script type="text/javascript">
 
-  // Load the Visualization API and the piechart package.
-  google.load('visualization', '1.0', {'packages':['corechart']});
-
   // Set a callback to run when the Google Visualization API is loaded.
   google.setOnLoadCallback(drawChart);
-
-
 
   // Callback that creates and populates a data table,
   // instantiates the pie chart, passes in the data and
@@ -94,7 +116,6 @@
     var options = {'title':'Utility Bills by Month',
                   legend: {position: 'none'},
                   backgroundColor: 'transparent',
-
                   vAxis: {format: 'currency'}
                  };
 
@@ -104,4 +125,7 @@
 
   }
 
-   </script>
+  // Load the Visualization API and the piechart package.
+  google.load('visualization', '1.0', {'packages':['corechart']});
+
+</script>
