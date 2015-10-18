@@ -53,8 +53,23 @@
   <% end %>
 
   <div class="row">
+    <div class="small-12 columns">
+      <div class="small-4 columns">
+        <div class="panel">
+          <p>This apartment's average monthly utility bill is $<%= @monthly_bills.mean.to_i %>.</p>
+        </div>
+      </div>
+      <div class="small-4 columns">
+        <div class="panel">
+          <p>This is more expensive than <%= @average_bills.percentile_rank(@monthly_bills.mean).to_i %>% of listed apartments.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
     <div class="small-12 columns show-for-medium-up">
-      <ul class="button-group even-3 round">
+      <ul class="button-group even-<%= current_tenant ? 3 : 2 %> round">
         <li><%= link_to "Back to list of rental units", rental_units_path, class:"button" %></li>
         <% if @rental_unit.tenant == current_tenant %>
           <% if !@rental_unit.utilities_included? %>
@@ -70,7 +85,7 @@
     </div>
 
     <div class="small-12 columns hide-for-medium-up">
-      <ul class="button-group even-3 round">
+      <ul class="button-group even-<%= current_tenant ? 3 : 2 %> round">
         <li><%= link_to "Back to list of rental units", rental_units_path, class:"button tiny" %></li>
         <% if @rental_unit.tenant == current_tenant %>
           <% if !@rental_unit.utilities_included? %>
@@ -88,7 +103,6 @@
 </div>
 
 <script type="text/javascript">
-
   // Set a callback to run when the Google Visualization API is loaded.
   google.setOnLoadCallback(drawChart);
 
@@ -106,11 +120,10 @@
     var data = new google.visualization.DataTable();
     data.addColumn('string', 'Month');
     data.addColumn('number', 'Average amount ($)');
-    <% (1..12).each do |m| %>
-     data.addRow([monthNames[<%= m-1 %>],
-       <%= @rental_unit.bills.where(month: m).average(:amount).to_i %>]);
-    <% end %>
 
+    for (i=1;i<13;i++) {
+      data.addRow([monthNames[i-1], gon.monthly_bills[i-1]]);
+    }
 
     // Set chart options
     var options = {'title':'Utility Bills by Month',
@@ -123,9 +136,8 @@
     var chart = new google.visualization.ColumnChart(document.getElementById('bill-chart'));
     chart.draw(data, options);
 
-  }
+    }
 
-  // Load the Visualization API and the piechart package.
-  google.load('visualization', '1.0', {'packages':['corechart']});
-
+    // Load the Visualization API and the piechart package.
+    google.load('visualization', '1.0', {'packages':['corechart']});
 </script>

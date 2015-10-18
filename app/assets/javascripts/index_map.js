@@ -53,8 +53,6 @@ function initHeatMap(map) {
   var unit = [];
   var monthly_rent;
 
-  console.log("before getting data");
-
   for (var i in gon.rental_units) {
     unit[i] = new google.maps.LatLng(gon.rental_units[i].latitude,
                                      gon.rental_units[i].longitude);
@@ -63,18 +61,12 @@ function initHeatMap(map) {
     heatMapData.push(heatMapPoint);
   }
 
-  console.log("after getting data");
-
-  console.log("data:" + heatMapData);
-  console.log("map:" + map);
   var heatmap = new google.maps.visualization.HeatmapLayer({
     data: heatMapData,
     map: map,
     radius: 20
   });
 
-
-  console.log("after visualization");
 
   heatmap.setMap(map);
 }

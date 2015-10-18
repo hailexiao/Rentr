@@ -1,6 +1,14 @@
 <div id="map"></div>
 
 <div class="row">
+  <div class="small-8 small-centered columns">
+    <div class="panel">
+      <p>As of <%= Date.today %>, the average monthly utility bill in Boston is $<%= @average_bills.mean.to_i %>.</p>
+    </div>
+  </div>
+</div>
+
+<div class="row">
   <div class="small-3 small-centered columns">
     <%= link_to 'Add a rental unit', new_rental_unit_path, class: 'button radius' %>
   </div>
