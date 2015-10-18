@@ -12,6 +12,7 @@ class RentalUnitsController < ApplicationController
     @monthly_bills = @rental_unit.monthly_bills
     gon.monthly_bills = @monthly_bills
     @average_bills = RentalUnit.average_bills
+    @utility_percentile = @rental_unit.utility_percentile
     @bill = Bill.new
 
     respond_to do |format|
