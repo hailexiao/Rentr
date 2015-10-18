@@ -38,4 +38,16 @@ class RentalUnit < ActiveRecord::Base
     end
   end
 
+  def self.average_bills
+    self.all.map { |unit| unit.bills.average(:amount).to_i }
+  end
+
+  def monthly_bills
+    (1..12).map { |m| self.bills.where(month: m).average(:amount).to_i }
+  end
+
+  def utility_percentile
+    self.class.average_bills.percentile_rank(self.monthly_bills.mean)
+  end
+
 end

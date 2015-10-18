@@ -2,12 +2,17 @@ class RentalUnitsController < ApplicationController
   def index
     @rental_units = RentalUnit.all
     gon.rental_units = @rental_units
-    gon.average_bills = @rental_units.map { |unit| unit.bills.average(:amount).to_i }
+    @average_bills = RentalUnit.average_bills
+    gon.average_bills = @average_bills
   end
 
   def show
     @rental_unit = RentalUnit.find(params[:id])
     gon.rental_unit = @rental_unit
+    @monthly_bills = @rental_unit.monthly_bills
+    gon.monthly_bills = @monthly_bills
+    @average_bills = RentalUnit.average_bills
+    @utility_percentile = @rental_unit.utility_percentile
     @bill = Bill.new
 
     respond_to do |format|

@@ -1,7 +1,16 @@
 <div id="map"></div>
 
 <div class="row">
-  <div class="small-3 small-centered columns">
+  <div class="small-12 small-centered columns">
+    <div class="panel apartment-metric">
+      <span class="apartment-metric-text">As of <%= Date.today %>, the average monthly utility bill in Boston is</span>
+      <span class="apartment-metric-number">$<%= @average_bills.mean.to_i %></span>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="small-12 medium-6 large-3 small-centered columns">
     <%= link_to 'Add a rental unit', new_rental_unit_path, class: 'button radius' %>
   </div>
 </div>

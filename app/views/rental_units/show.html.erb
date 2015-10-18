@@ -24,12 +24,12 @@
   <div class="row">
     <div class="small-12 columns">
       <ul class="small-block-grid-1 medium-block-grid-3">
-        <li class="rental-text-box"><p><%= @rental_unit.type_of_dwelling %></p>
-            <p><%= "#{@rental_unit.number_of_bedrooms} bedrooms" %></p>
-            <p><%= "Rent: $#{@rental_unit.monthly_rent} per month" %></p>
-            <p><%= "Gas Company: #{@rental_unit.gas_utility.name}" %></p>
-            <p><%= "Electric Company: #{@rental_unit.electric_utility.name}" %></p>
-            <p><%= "Neighborhood: #{@rental_unit.neighborhood.name}" %></p>
+        <li><div class="apartment-info"><%= @rental_unit.type_of_dwelling %></div>
+            <div class="apartment-info"><i class="fa fa-building left"></i><%= "#{@rental_unit.number_of_bedrooms} bedrooms" %></div>
+            <div class="apartment-info"><i class="fa fa-money left"></i><%= "$#{@rental_unit.monthly_rent} per month" %></div>
+            <div class="apartment-info"><i class="fa fa-fire left"></i><%= "#{@rental_unit.gas_utility.name}" %></div>
+            <div class="apartment-info"><i class="fa fa-bolt left"></i> <%= "#{@rental_unit.electric_utility.name}" %></div>
+            <div class="apartment-info"><i class="fa fa-location-arrow left"></i><%= "#{@rental_unit.neighborhood.name}" %></div>
         </li>
       <li><%= image_tag "https://maps.googleapis.com/maps/api/staticmap?size=300x300&markers=#{@rental_unit.latitude},#{@rental_unit.longitude}&key=#{ENV['GOOGLE_MAPS_BROWSER_API_KEY']}" %></li>
       <% if @rental_unit.photos.empty? %>
@@ -52,9 +52,25 @@
     </div>
   <% end %>
 
+  <div class="row" data-equalizer data-equalizer-mq="medium-up">
+    <div class="small-6 columns">
+      <div class="panel apartment-metric" data-equalizer-watch>
+        <span class="apartment-metric-text">This apartment's average monthly utility bill is </span>
+        <span class="apartment-metric-number">$<%= @monthly_bills.mean.to_i %></span>
+      </div>
+    </div>
+    <div class="small-6 columns">
+      <div class="panel apartment-metric <%= "expensive" if @utility_percentile > 50 %>" data-equalizer-watch>
+        <span class="apartment-metric-text">This is more expensive than </span>
+        <span class="apartment-metric-number"> <%= @utility_percentile.to_i %>% </span>
+        <span class="apartment-metric-text">of listed apartments.</span>
+      </div>
+    </div>
+  </div>
+
   <div class="row">
     <div class="small-12 columns show-for-medium-up">
-      <ul class="button-group even-3 round">
+      <ul class="button-group even-<%= current_tenant ? 3 : 2 %> round">
         <li><%= link_to "Back to list of rental units", rental_units_path, class:"button" %></li>
         <% if @rental_unit.tenant == current_tenant %>
           <% if !@rental_unit.utilities_included? %>
@@ -70,7 +86,7 @@
     </div>
 
     <div class="small-12 columns hide-for-medium-up">
-      <ul class="button-group even-3 round">
+      <ul class="button-group even-<%= current_tenant ? 3 : 2 %> round">
         <li><%= link_to "Back to list of rental units", rental_units_path, class:"button tiny" %></li>
         <% if @rental_unit.tenant == current_tenant %>
           <% if !@rental_unit.utilities_included? %>
@@ -88,7 +104,6 @@
 </div>
 
 <script type="text/javascript">
-
   // Set a callback to run when the Google Visualization API is loaded.
   google.setOnLoadCallback(drawChart);
 
@@ -106,11 +121,10 @@
     var data = new google.visualization.DataTable();
     data.addColumn('string', 'Month');
     data.addColumn('number', 'Average amount ($)');
-    <% (1..12).each do |m| %>
-     data.addRow([monthNames[<%= m-1 %>],
-       <%= @rental_unit.bills.where(month: m).average(:amount).to_i %>]);
-    <% end %>
 
+    for (i=1;i<13;i++) {
+      data.addRow([monthNames[i-1], gon.monthly_bills[i-1]]);
+    }
 
     // Set chart options
     var options = {'title':'Utility Bills by Month',
@@ -123,9 +137,8 @@
     var chart = new google.visualization.ColumnChart(document.getElementById('bill-chart'));
     chart.draw(data, options);
 
-  }
+    }
 
-  // Load the Visualization API and the piechart package.
-  google.load('visualization', '1.0', {'packages':['corechart']});
-
+    // Load the Visualization API and the piechart package.
+    google.load('visualization', '1.0', {'packages':['corechart']});
 </script>

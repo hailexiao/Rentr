@@ -102,3 +102,52 @@ img {
   height: 25vh;
   background-color: rgba(255,255,255,0.5);
 }
+
+.apartment-info {
+  background-color: #c5499b;
+  box-sizing: border-box;
+  margin: 5px 0;
+  display: block;
+  border-radius: 4px;
+  color: #fff;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  padding: 5px 15px;
+  text-align: center;
+  width: auto;
+  font-size: 24px;
+}
+
+.apartment-metric {
+  background-color: #49c5b1;
+  box-sizing: border-box;
+  border-radius: 4px;
+  color: #fff;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  padding: 10px 10px;
+  text-align: center;
+  width: auto;
+}
+
+.apartment-metric.expensive {
+  background-color: #a53532;
+}
+
+.apartment-metric-number {
+  display: block;
+  font-size: 84px;
+  font-weight: 700;
+  line-height: 84px;
+}
+
+.apartment-metric-text {
+  display: block;
+  font-size: 24px;
+  font-weight: 200;
+}
+
+.fa.left {
+  text-align: left;
+  position: relative;
+  vertical-align: bottom;
+  top: 5px;
+}
